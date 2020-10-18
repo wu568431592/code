@@ -151,11 +151,64 @@ function resolvePromise(bridgePromise, x, resolve, reject) {
   }
 }
 
-
-
 Promise.prototype.catch = function(fn){
   return this.then(null, fn)
 }
+
+Promise.all = function(promises){
+  return new Promise((resolve, reject)=>{
+    let flag = 0
+    const result = []
+    for(let i = 0; i< promises.length; i++){
+      promises[i].then(res=>{
+        result[i] = (res)
+        flag++
+        if(flag === promises.length){
+          resolve(result)
+        }
+      }).catch(err=>{
+        reject(err)
+      })
+    }
+  })
+}
+
+Promise.race = function(promises){
+  return new Promise((resolve, reject)=>{
+    for(let i = 0; i < promises.length; i++){
+      promises[i].then(res=>{
+        resolve(res)
+      }).catch(err=>{
+        console.log(err)
+      })
+    }
+  })
+}
+
+Promise.resolve = function(value){
+  return new Promise(resolve=>{
+    resolve(value)
+  })
+}
+
+Promise.reject = function(error){
+  return new Promise((resolve, reject)=>{
+    reject(error)
+  })
+}
+
+
+Promise.promisify = function(fn) {
+  return function() {
+    var args = Array.from(arguments);
+    return new MyPromise(function(resolve, reject) {
+      fn.apply(null, args.concat(function(err) {
+        err ? reject(err) : resolve(arguments[1])
+      }));
+    })
+  }
+}
+
 
 Promise.deferred = function() {
   let defer = {};
@@ -165,6 +218,7 @@ Promise.deferred = function() {
   });
   return defer;
 }
+
 try {
   module.exports = Promise
 } catch (e) {
