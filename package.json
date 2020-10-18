@@ -1,0 +1,24 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "write code by myself",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wu568431592/code.git"
+  },
+  "author": "wuwenchao0314@163.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wu568431592/code/issues"
+  },
+  "homepage": "https://github.com/wu568431592/code#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "eslint": "^7.11.0"
+  }
+}
