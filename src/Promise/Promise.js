@@ -197,7 +197,6 @@ Promise.reject = function(error){
   })
 }
 
-
 Promise.promisify = function(fn) {
   return function() {
     var args = Array.from(arguments);
