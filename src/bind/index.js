@@ -16,7 +16,6 @@ Function.prototype._bind = function(context, ...params){
 
     // 而当绑定函数自己执行的时候。
     // this 指向的是window。则使用我们绑定context。
-    console.log(this)
     return self.apply(this instanceof func ? this: context, params.concat(...args))
   }
   if(this.prototype){

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      同源策略
+    */
+    const p = opener;
+    console.log(p)
+    p.document.body.style.display = 'none'
+    console.log(p.localStorage.getItem('firstPage'))
+  </script>
+</body>
+</html>
