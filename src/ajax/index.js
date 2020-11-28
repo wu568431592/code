@@ -16,3 +16,15 @@ const request = function (option){
     xhr.send()
   })
 }
+request({
+  method: 'get',
+  url:'http://127.0.0.1:8082/'
+}).then(res => {
+  console.log('res', res)
+}).catch(err => {
+  console.log('err', err)
+})
+
+setTimeout(()=>{
+  alert('timeout:'+ document.body.children.length)
+})

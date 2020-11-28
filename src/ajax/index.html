@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="prefetch" href="./index.js">
 </head>
 <body>
   <p id="pp">22222</p>
@@ -15,23 +16,16 @@
     const pro = Promise.resolve(1).then(res=>{
       alert('promise:' + p.innerHTML )
     })
-    setTimeout(()=>{
-      alert('timeout:'+ document.body.children.length)
-    })
+    
     console.log(document.body.children)
     console.log(document.body.childNodes)
     localStorage.setItem('firstPage','哈哈哈')
-  </script>
-  <script src="./index.js"></script>
-  <script>
-    request({
-      method: 'get',
-      url:'http://127.0.0.1:8082/'
-    }).then(res => {
-      console.log('res', res)
-    }).catch(err => {
-      console.log('err', err)
+    document.querySelector('#pp').addEventListener('click',function(){
+      const s= document.createElement('script')
+      s.src = './index.js'
+      document.body.append(s)
     })
   </script>
+  <!-- <script src="./index.js"></script> -->
 </body>
 </html>
