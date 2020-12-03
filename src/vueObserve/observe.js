@@ -50,6 +50,7 @@ function observer(target){
 
 
 class Dep{
+  static target = null
   constructor(){
     this.subs = []
   }
@@ -63,7 +64,6 @@ class Dep{
   }
 }
 
-Dep.target = null 
 
 class Watcher{
   constructor(vm, key, cb){
@@ -101,13 +101,17 @@ var data = {
 }
 
 observer(data)
+console.log(data)
+
 //模板编译过程中发现有 data引用。就new一个watcher
 new Watcher(this, 'name', function(newVal, oldVal){
   console.log('name更新了',newVal, oldVal)
 })
-
+new Watcher(this, 'age', function(newVal, oldVal){
+  console.log('age更新了',newVal, oldVal)
+})
 data.name = '哈哈哈'
-// data.age = 21
+data.age = 21
 // data.x = '1000'
 // data.info.address = '上海'
 // data.num.push(6)
