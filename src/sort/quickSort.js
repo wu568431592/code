@@ -47,5 +47,5 @@ function quickSort2(arr){
 
 module.exports = {
   quickSort,
-  quickSort2
+  quickSort2,
 }
