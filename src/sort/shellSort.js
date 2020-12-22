@@ -15,8 +15,5 @@ function shellSort(arr){
   return res
 }
 
-module.exports = s
+module.exports = shellSort
 
-function s (arr){
-  
-}
