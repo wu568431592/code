@@ -27,7 +27,7 @@ function quickSort2(arr){
     while(l < r) {
         //右指针从右向左扫描，碰到第一个小于基准数的时候停住
         while(l < r && arr[r] >= temp)
-            r --;
+          r --;
         //左指针从左向右扫描，碰到第一个大于基准数的时候停住
         while(l < r && arr[l] <= temp)
             l ++;
@@ -48,4 +48,27 @@ function quickSort2(arr){
 module.exports = {
   quickSort,
   quickSort2,
+  s
+}
+
+function s(arr, start = 0 , end = arr.length - 1){
+  if(start >= end){
+    return 
+  }
+  let l = start
+  let r = end
+  let temp = arr[start]
+  while(l < r){
+    while(l<r && arr[r]>= temp ){
+      r--
+    }
+    while( l< r && arr[l]<= temp){
+      l++
+    }
+    [arr[l], arr[r]] = [arr[r], arr[l]]
+  }
+  [arr[start], arr[l]] = [arr[l], arr[start]]
+
+  s(arr, start, l-1)
+  s(arr, l+1, end)
 }

@@ -21,5 +21,5 @@ function flattenWithConcat(arr){
 
 module.exports = {
   flattenWithReduce,
-  flattenWithConcat
+  flattenWithConcat,
 }

@@ -14,7 +14,10 @@ const arr = Array.from({length: 100000},()=> parseInt(Math.random()*1000000))
 // 快速排序2
 // const quickSort2 = require('./quickSort').quickSort2
 // const res1 = quickSort2(arr)
-// console.log('快速排序2', res1)
+// console.log('快速排序2', res1, arr)
+const s = require('./quickSort').s
+const res1 = s(arr)
+console.log('快速排序2', res1, arr)
 
 // 选择排序
 // const selectionSort = require('./selectionSort')
@@ -27,11 +30,11 @@ const arr = Array.from({length: 100000},()=> parseInt(Math.random()*1000000))
 // console.log('插入排序', res)
 
 // 希尔排序
-const shellSort = require('./shellSort')
-console.time('希尔排序')
-const res = shellSort(arr)
-console.log('希尔排序', res)
-console.timeEnd('希尔排序')
+// const shellSort = require('./shellSort')
+// console.time('希尔排序')
+// const res = shellSort(arr)
+// console.log('希尔排序', res)
+// console.timeEnd('希尔排序')
 
 
 // 归并排序

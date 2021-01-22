@@ -20,8 +20,8 @@ function deepClone(obj, hash = new WeakMap()){
       res[key] = deepClone(obj[key], hash)
     }
   }
-  Boolean
   return res
 }
 
 module.exports = deepClone
+

@@ -24,3 +24,4 @@ Function.prototype._bind = function(context, ...params){
   resFunction.prototype = new func()
   return resFunction
 }
+

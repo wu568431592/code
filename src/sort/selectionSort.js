@@ -15,3 +15,4 @@ function selectionSort(arr){
   return res
 }
 module.exports = selectionSort
+

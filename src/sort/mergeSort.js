@@ -29,20 +29,19 @@ function mergeSort(arr){
 }
 
 module.exports = s
-
 function s(arr){
-  if(arr.length<2){
+  if(arr.length === 1){
     return arr
   }
-  const middle = Math.floor(arr.length/2)
-  const left = arr.slice(0,middle)
-  const right = arr.slice(middle)
-  return mer(s(left), s(right))
+  const minIndex = arr.length >> 1
+  const left = arr.slice(0,minIndex)
+  const right = arr.slice(minIndex)
+  return merge(s(left), s(right))
 }
-function mer(left, right){
+function merge(left, right){
   const res = []
   while(left.length && right.length){
-    if(left[0]<=right[0]){
+    if(left[0] < right[0]){
       res.push(left.shift())
     }else{
       res.push(right.shift())
