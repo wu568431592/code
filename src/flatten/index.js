@@ -15,6 +15,7 @@ function flattenWithConcat(arr){
   }
   // const res = Array.prototype.concat.apply([],arr)
   const res = [].concat(...arr)
+  // console.log(res)
   return flattenWithConcat(res)
 }
 

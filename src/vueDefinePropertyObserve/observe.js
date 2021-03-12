@@ -18,7 +18,7 @@ function defineReactive(target, key, value){
   // 深度监听
   observer(value)
   const dep = new Dep()
-  Object.defineProperty(target,key, {
+  Object.defineProperty(target, key, {
     get(){
       if(Dep.target){
         dep.addSub(Dep.target)
@@ -115,3 +115,5 @@ data.age = 21
 // data.x = '1000'
 // data.info.address = '上海'
 // data.num.push(6)
+
+

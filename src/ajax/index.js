@@ -25,6 +25,3 @@ request({
   console.log('err', err)
 })
 
-setTimeout(()=>{
-  alert('timeout:'+ document.body.children.length)
-})

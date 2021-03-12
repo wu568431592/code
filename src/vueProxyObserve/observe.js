@@ -44,3 +44,4 @@ proxyData.name = 'hahahha'
 // console.log(proxyData.info.address)
 
 proxyData.sex = '男'
+

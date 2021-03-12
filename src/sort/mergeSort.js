@@ -33,21 +33,21 @@ function s(arr){
   if(arr.length === 1){
     return arr
   }
-  const minIndex = arr.length >> 1
-  const left = arr.slice(0,minIndex)
-  const right = arr.slice(minIndex)
+  const mid = Math.floor(arr.length/2)
+  const left = arr.slice(0, mid)
+  const right = arr.slice(mid)
   return merge(s(left), s(right))
 }
 function merge(left, right){
-  const res = []
+  const result = []
   while(left.length && right.length){
-    if(left[0] < right[0]){
-      res.push(left.shift())
+    if(left[0]<right[0]){
+      result.push(left.shift())
     }else{
-      res.push(right.shift())
+      result.push(right.shift)
     }
   }
-  while(left.length) res.push(left.shift())
-  while(right.length) res.push(right.shift())
-  return res
+  while(left.length) result.push(left.shift())
+  while(right.length) result.push(right.shift())
+  return result
 }

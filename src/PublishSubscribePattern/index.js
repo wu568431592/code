@@ -54,3 +54,4 @@ EventChannel.prototype.$emit = function (type, message) {
 }
 
 module.exports = EventChannel
+

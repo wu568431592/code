@@ -19,6 +19,7 @@ console.log(minHeap.size())
 
 
 const maxHeap = new MaxHeap()
+
 maxHeap.insert(1)
 console.log(maxHeap)
 maxHeap.insert(2)

@@ -24,4 +24,3 @@ function deepClone(obj, hash = new WeakMap()){
 }
 
 module.exports = deepClone
-
