@@ -18,3 +18,4 @@ function binarySearch(nums, target){
 
 
 module.exports = binarySearch
+

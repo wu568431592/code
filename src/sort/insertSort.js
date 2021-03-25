@@ -18,4 +18,16 @@ function insertSort(arr){
 
 module.exports = insertSort
 
+function s(arr){
+  for(let i = 1; i<arr.length;i++){
+    const cur = arr[i]
+    let preIndex = i - 1
+    while(preIndex>=0 && arr[preIndex]> cur){
+      arr[preIndex + 1] = arr[preIndex]
+      preIndex --
+    } 
+    arr[preIndex + 1] = cur
+  }
+  return arr
+}
 

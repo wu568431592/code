@@ -4,9 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    #app{
+      width: 10rem;
+      height: 10rem;
+      background-color: green;
+      position: absolute;
+    }
+    *{
+      padding: 0;
+      margin:0;
+    }
+    html{
+      font-size: 75px;
+    }
+  </style>
 </head>
 <body>
-  
-  <script src="./observe.js"></script>
+  <div id='app'></div>
+  <!-- <script src="./observe.js"></script> -->
+  <!-- <script>
+    const div = document.getElementById('app')
+    let left = 0
+    let flag = true
+    let timer = null
+    let speed = 5
+    function go(){
+      if(flag){
+        div.style.left = (left += speed) + 'px'
+        speed -= 5/(5000/(1000/60))>0?5/(5000/(1000/60)):0
+        console.log(speed)
+      }else{
+        cancelAnimationFrame(timer)
+      }
+    }
+    (function animloop() {
+        go();
+        timer = window.requestAnimationFrame(animloop);
+    })();
+    const intervalTimer = setInterval(() => {
+      flag = false
+      clearInterval(intervalTimer)
+    }, 5000);
+  </script> -->
+  <script>
+    function resize(){
+      const width = document.body.clientWidth
+      const size = width / 10
+      document.documentElement.style.fontSize = size + 'px'
+      var scale = 1 / devicePixelRatio;
+      document.querySelector('meta[name="viewport"]').setAttribute('content','initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+    }
+    resize()
+    window.onresize = function(){
+      resize()
+    }
+    const ev = new CustomEvent('ev',{
+      bubbles:false,
+      cancelable: true,
+      detail:{
+        b: 2
+      }
+    })
+    document.addEventListener('ev', e => {
+        console.log(e)
+        console.log(e.detail.b) // 2
+    })
+    //分派事件：
+    document.dispatchEvent(ev)
+  </script>
 </body>
 </html>

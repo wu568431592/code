@@ -40,8 +40,10 @@ const data = {
 const proxyData = reactive(data)
 
 proxyData.name = 'hahahha'
+delete proxyData.age
 // console.log(proxyData.name)
 // console.log(proxyData.info.address)
-
 proxyData.sex = '男'
+
+
 

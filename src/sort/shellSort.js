@@ -15,4 +15,5 @@ function shellSort(arr){
   return res
 }
 
-module.exports = shellSort
+
+module.exports = s

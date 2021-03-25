@@ -42,11 +42,11 @@ const arr = Array.from({length: 100000},()=> parseInt(Math.random()*1000000))
 
 
 // // 希尔排序
-// const shellSort = require('./shellSort')
-// console.time('希尔排序')
-// const res = shellSort(arr)
-// console.log('希尔排序', res)
-// console.timeEnd('希尔排序')
+const shellSort = require('./shellSort')
+console.time('希尔排序')
+const res = shellSort(arr)
+console.log('希尔排序', res)
+console.timeEnd('希尔排序')
 
 
 // 归并排序
@@ -59,8 +59,8 @@ const arr = Array.from({length: 100000},()=> parseInt(Math.random()*1000000))
 
 // 堆排序
 // const arr = [1,2,3,4,5,6,7,8]
-console.time('堆排序') 
-const heapSort = require('./heapSort')
-const res2 = heapSort(arr)
-console.log('堆排序', res2)
-console.timeEnd('堆排序')
+// console.time('堆排序') 
+// const heapSort = require('./heapSort')
+// const res2 = heapSort(arr)
+// console.log('堆排序', res2)
+// console.timeEnd('堆排序')

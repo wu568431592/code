@@ -223,3 +223,101 @@ try {
 } catch (e) {
   console.log(e)
 }
+
+
+function Prom(fn){
+  this.status = 'pending'
+  this.value = null
+  this.error = null 
+
+  this.fulfilledCallbacks = []
+  this.rejectedCallbacks = []
+
+  function resolve(value){
+    if(this.status === 'pending'){
+      setTimeout(()=>{
+        this.status = 'fulfilled'
+        this.value = value
+        this.fulfilledCallbacks.forEach(callback => {
+          return callback(value)
+        })
+      })
+    }
+  }
+  function reject(error){
+    if(this.status === 'pending'){
+      setTimeout(()=>{
+        this.status = 'fulfilled'
+        this.error = error
+        this.rejectedCallbacks.forEach(callback => {
+          return callback(error)
+        })
+      })
+    }
+  }
+  try{
+    fn(resolve, reject)
+  }catch(error){
+    reject(error)
+  }
+}
+
+Prom.prototype.then = function(onFulfilled, onRejected){
+  const _this = this
+  if(_this.status === 'pending'){
+    _this.fulfilledCallbacks.push(onFulfilled)
+    _this.rejectedCallbacks.push(onRejected)
+  }else if(_this.status === 'fulfilled'){
+    onFulfilled(_this.value)
+  }else {
+    onRejected(_this.error)
+  }
+  return _this
+}
+Prom.prototype.catch = function (fn){
+  return this.then(null, fn)
+}
+
+Promise.prototype._all = function(fns){
+  const len = fns.length
+  let num = 0
+  const res = []
+  return new Promise((resolve, reject)=>{
+    for(let i in fns){
+      fns[i].then((response)=>{
+        if(num === len){
+          resolve(res)
+        }else{
+          num ++ 
+          res[i] = response
+        }
+      },(error )=>{
+        reject(error)
+      })
+    }
+  })
+}
+
+Promise.prototype._allLimit3 = function(fns){
+  const len = fns.length
+  const runtime = fns.splice(0, 3)
+  let num = 0
+  const res = []
+  return new Promise((resolve, reject)=>{
+    for(let i= 0; i < runtime.length; i++){
+      runtime[i].then((response)=>{
+        if(num === len){
+          resolve(res)
+        }else{
+          num ++ 
+          res[i] = response
+          if(fns.length){
+            runtime.push(fns.shift())
+          }
+        }
+      },(error )=>{
+        reject(error)
+      })
+    }
+  })
+}

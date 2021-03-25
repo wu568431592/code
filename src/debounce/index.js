@@ -10,3 +10,4 @@ function debounce (func, wait = 1000){
 }
 
 module.exports = debounce
+

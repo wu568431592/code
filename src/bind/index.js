@@ -24,27 +24,3 @@ Function.prototype._bind = function(context, ...params){
   resFunction.prototype = new func()
   return resFunction
 }
-
-
-Function.prototype._bi = function(context, ...params){
-  if(typeof this !== 'function'){
-    throw new Error('must be function')
-  }
-  let _this = this;
-  function c (){}
-  const resFunciton = function(...args){
-    return _this.apply(this instanceof c ? this: context, params.concat(...args))
-  }
-  if(this.prototype){
-    c.prototype = this.prototype
-  }
-  resFunciton.prototype = new c()
-  return resFunciton
-}
-
-function news(func, ...args){
-  const obj = {}
-  obj.__proto__ = func.prototype
-  const res = func.apply(obj, args)
-  return res instanceof Object ? res : obj
-}
